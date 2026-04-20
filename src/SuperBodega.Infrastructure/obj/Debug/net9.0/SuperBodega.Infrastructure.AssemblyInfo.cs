@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SuperBodega.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4d5db8ef9e81ce4269cc1d6e48bcfc4d6506e33e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6785abf5c0687b3fa9ceb0e26c583d9f057e4c6d")]
 [assembly: System.Reflection.AssemblyProductAttribute("SuperBodega.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SuperBodega.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

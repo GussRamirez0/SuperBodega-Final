@@ -1,3 +1,4 @@
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using RabbitMQ.Client;
@@ -11,15 +12,15 @@ namespace SuperBodega.Infrastructure.Services;
 public class NotificacionConsumerService : BackgroundService
 {
     private readonly ILogger<NotificacionConsumerService> _logger;
-    private readonly EmailService _emailService;
+    private readonly IServiceScopeFactory _scopeFactory;
     private IConnection? _connection;
     private IModel? _channel;
     private const string QueueName = "notificaciones-pedidos";
 
-    public NotificacionConsumerService(ILogger<NotificacionConsumerService> logger, EmailService emailService)
+    public NotificacionConsumerService(ILogger<NotificacionConsumerService> logger, IServiceScopeFactory scopeFactory)
     {
         _logger = logger;
-        _emailService = emailService;
+        _scopeFactory = scopeFactory;
     }
 
     public override Task StartAsync(CancellationToken cancellationToken)
@@ -59,7 +60,9 @@ public class NotificacionConsumerService : BackgroundService
             {
                 try
                 {
-                    await _emailService.EnviarNotificacionPedidoAsync(
+                    using var scope = _scopeFactory.CreateScope();
+                    var emailService = scope.ServiceProvider.GetRequiredService<EmailService>();
+                    await emailService.EnviarNotificacionPedidoAsync(
                         notificacion.ClienteEmail,
                         notificacion.ClienteNombre,
                         notificacion.VentaId,
