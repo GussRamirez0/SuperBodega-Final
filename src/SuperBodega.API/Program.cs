@@ -22,6 +22,7 @@ builder.Services.AddTransient<IResend, ResendClient>();
 builder.Services.AddTransient<EmailService>();
 builder.Services.AddSingleton<RabbitMQService>();
 builder.Services.AddHostedService<NotificacionConsumerService>();
+builder.Services.AddHostedService<VentaAsyncWorker>();
 
 var app = builder.Build();
 
