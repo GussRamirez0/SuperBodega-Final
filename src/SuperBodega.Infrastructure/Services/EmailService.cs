@@ -1,13 +1,20 @@
 using MailKit.Net.Smtp;
 using MailKit.Security;
+using Microsoft.Extensions.Configuration;
 using MimeKit;
 
 namespace SuperBodega.Infrastructure.Services;
 
 public class EmailService
 {
-    private readonly string _email = "lramirezb10@miumg.edu.gt";
-    private readonly string _password = "eevedbvdpdclohkd";
+    private readonly string _email;
+    private readonly string _password;
+
+    public EmailService(IConfiguration configuration)
+    {
+        _email = configuration["Gmail:Email"] ?? "";
+        _password = configuration["Gmail:Password"] ?? "";
+    }
 
     public async Task EnviarNotificacionPedidoAsync(string destinatario, string nombre, int ventaId, string estado, decimal total)
     {

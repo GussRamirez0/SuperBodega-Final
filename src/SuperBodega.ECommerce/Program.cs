@@ -20,7 +20,6 @@ builder.Services.Configure<ResendClientOptions>(o =>
 builder.Services.AddTransient<IResend, ResendClient>();
 builder.Services.AddTransient<EmailService>();
 builder.Services.AddSingleton<RabbitMQService>();
-builder.Services.AddHostedService<NotificacionConsumerService>();
 
 var app = builder.Build();
 
