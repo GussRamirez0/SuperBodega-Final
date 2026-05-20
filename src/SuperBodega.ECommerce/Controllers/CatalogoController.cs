@@ -14,7 +14,7 @@ public class CatalogoController : ControllerBase
     {
         _context = context;
     }
-
+// Catalogo publico con paginacion
     [HttpGet]
     public async Task<IActionResult> GetProductos(
         [FromQuery] int pagina = 1,
