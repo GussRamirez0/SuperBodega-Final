@@ -47,6 +47,7 @@ public class CatalogoController : ControllerBase
                 p.ImagenUrl,
                 Categoria = p.Categoria.Nombre
             })
+            
             .ToListAsync();
 
         return Ok(new {
