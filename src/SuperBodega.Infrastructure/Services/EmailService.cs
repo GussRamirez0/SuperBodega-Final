@@ -15,7 +15,7 @@ public class EmailService
         _email = configuration["Gmail:Email"] ?? "";
         _password = configuration["Gmail:Password"] ?? "";
     }
-// Servicio de envio de emails con Gmail SMTP
+// Servicio de envio de emails mediante Gmail SMTP
     public async Task EnviarNotificacionPedidoAsync(string destinatario, string nombre, int ventaId, string estado, decimal total)
     {
         var asunto = estado switch
