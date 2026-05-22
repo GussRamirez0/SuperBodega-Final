@@ -61,7 +61,7 @@ public class CarritoController : ControllerBase
                     Subtotal = subtotal
                 });
             }
-
+// Validacion de stock antes de procesar compra
             venta.Total = total;
             venta.Detalles = detalles;
 
