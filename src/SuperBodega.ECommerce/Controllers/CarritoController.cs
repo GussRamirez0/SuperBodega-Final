@@ -24,6 +24,7 @@ public class CarritoController : ControllerBase
     {
         using var transaction = await _context.Database.BeginTransactionAsync();
         try
+        // Proceso de compra completo del carrito
         {
             var cliente = await _context.Clientes.FindAsync(request.ClienteId);
             if (cliente == null) return BadRequest("Cliente no encontrado");
