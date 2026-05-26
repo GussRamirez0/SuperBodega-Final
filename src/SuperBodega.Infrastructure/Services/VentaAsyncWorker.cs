@@ -11,7 +11,7 @@ using System.Text;
 using System.Text.Json;
 
 namespace SuperBodega.Infrastructure.Services;
-
+// Worker encargado de procesar ventas asincronas
 public class VentaAsyncWorker : BackgroundService
 {
     private readonly ILogger<VentaAsyncWorker> _logger;
