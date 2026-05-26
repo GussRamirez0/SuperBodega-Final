@@ -38,7 +38,7 @@ public class RabbitMQService : IDisposable
         _connection?.Close();
     }
 }
-
+// Publica mensajes en la cola de notificaciones
 public class NotificacionPedido
 {
     public int VentaId { get; set; }
