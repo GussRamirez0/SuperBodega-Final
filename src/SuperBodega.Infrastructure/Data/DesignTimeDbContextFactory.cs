@@ -13,3 +13,4 @@ public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<Applicatio
     }
 }
 // Factory design time
+// Factory design time
