@@ -14,7 +14,7 @@ public class CatalogoController : ControllerBase
     {
         _context = context;
     }
-// Catalogo publico con paginacion
+
     [HttpGet]
     public async Task<IActionResult> GetProductos(
         [FromQuery] int pagina = 1,
@@ -47,7 +47,6 @@ public class CatalogoController : ControllerBase
                 p.ImagenUrl,
                 Categoria = p.Categoria.Nombre
             })
-
             .ToListAsync();
 
         return Ok(new {
@@ -58,7 +57,7 @@ public class CatalogoController : ControllerBase
             Productos = productos
         });
     }
-// Filtros por categoria y busqueda
+
     [HttpGet("{id}")]
     public async Task<IActionResult> GetProducto(int id)
     {

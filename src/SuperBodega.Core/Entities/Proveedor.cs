@@ -13,4 +13,3 @@ public class Proveedor
 
     public ICollection<Compra> Compras { get; set; } = new List<Compra>();
 }
-// Entidad Proveedor

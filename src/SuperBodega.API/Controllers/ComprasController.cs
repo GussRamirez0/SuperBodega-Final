@@ -20,7 +20,7 @@ public class CompraDto
     public string Notas { get; set; } = string.Empty;
     public List<DetalleCompraDto> Detalles { get; set; } = new();
 }
-// este controlador maneja las compras, permite crear una compra con sus detalles, actualizarla, eliminarla y obtenerla por id o por proveedor. Al crear una compra, se actualiza el stock de los productos involucrados.
+
 [ApiController]
 [Route("api/[controller]")]
 public class ComprasController : ControllerBase
@@ -56,8 +56,6 @@ public class ComprasController : ControllerBase
             .Where(c => c.ProveedorId == proveedorId)
             .ToListAsync());
 
-    //aumentamos el stock de los productos al crear una compra, y si algo falla,
-    //hacemos rollback para mantener la integridad de los datos
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CompraDto dto)
     {
@@ -92,14 +90,9 @@ public class ComprasController : ControllerBase
                 });
             }
 
-
-            
             compra.Total = total;
             compra.Detalles = detalles;
             _context.Compras.Add(compra);
-
-            //transacción para asegurar que si algo falla,
-            //no se actualice el stock ni se cree la compra
             await _context.SaveChangesAsync();
             await transaction.CommitAsync();
             return CreatedAtAction(nameof(GetById), new { id = compra.Id }, compra);

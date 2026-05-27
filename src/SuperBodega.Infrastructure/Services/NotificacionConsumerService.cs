@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.Json;
 
 namespace SuperBodega.Infrastructure.Services;
-// Servicio consumidor de mensajes RabbitMQ
+
 public class NotificacionConsumerService : BackgroundService
 {
     private readonly ILogger<NotificacionConsumerService> _logger;
@@ -60,7 +60,6 @@ public class NotificacionConsumerService : BackgroundService
             {
                 try
                 {
-                    // Manejo de scopes para procesamiento por mensaje
                     using var scope = _scopeFactory.CreateScope();
                     var emailService = scope.ServiceProvider.GetRequiredService<EmailService>();
                     await emailService.EnviarNotificacionPedidoAsync(

@@ -5,10 +5,6 @@ using SuperBodega.Infrastructure.Data;
 
 namespace SuperBodega.API.Controllers;
 
-
-// este controlador maneja las ventas, permite crear una venta
-// con sus detalles, actualizarla, eliminarla y obtenerla por id o por cliente. Al crear una venta, se actualiza el stock de los productos involucrados. Ademas, permite cambiar el estado de una venta
-// entre "Pendiente", "Despachado", "Entregado" y "Cancelado".
 [ApiController]
 [Route("api/[controller]")]
 public class VentasController : ControllerBase
@@ -52,9 +48,6 @@ public class VentasController : ControllerBase
             .Where(v => v.Fecha >= inicio && v.Fecha <= fin)
             .ToListAsync());
 
-    // Verificar disponibilidad de stock antes de crear la venta, y actualizar el stock de los productos involucrados. Si no hay stock suficiente para alguno de los productos,
-    // se debe retornar un error indicando cuales productos no tienen stock suficiente.
-
     [HttpPost]
     public async Task<IActionResult> Create(Venta venta)
     {
@@ -65,9 +58,6 @@ public class VentasController : ControllerBase
             venta.Estado = "Pendiente";
             venta.Total = venta.Detalles.Sum(d => d.Cantidad * d.PrecioUnitario);
 
-
-            // validar stock y calcular subtotal de cada detalle,
-            // ademas de actualizar el stock de los productos antes de vender 
             foreach (var detalle in venta.Detalles)
             {
                 detalle.Subtotal = detalle.Cantidad * detalle.PrecioUnitario;
@@ -90,10 +80,6 @@ public class VentasController : ControllerBase
         }
     }
 
-
-    // actualizar una venta, solo se pueden actualizar los detalles de la venta, no el cliente ni la fecha.
-    // Al actualizar una venta, se actualiza el stock de los productos involucrados, tanto para aumentar el stock si se reduce la cantidad vendida,
-    // como para reducir el stock si se aumenta la cantidad vendida.
     [HttpPatch("{id}/estado")]
     public async Task<IActionResult> CambiarEstado(int id, [FromBody] string nuevoEstado)
     {

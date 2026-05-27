@@ -3,7 +3,7 @@ using System.Text;
 using System.Text.Json;
 
 namespace SuperBodega.Infrastructure.Messaging;
-// Servicio encargado de administrar conexion RabbitMQ
+
 public class RabbitMQService : IDisposable
 {
     private readonly IConnection _connection;
@@ -38,7 +38,7 @@ public class RabbitMQService : IDisposable
         _connection?.Close();
     }
 }
-// Publica mensajes en la cola de notificaciones
+
 public class NotificacionPedido
 {
     public int VentaId { get; set; }

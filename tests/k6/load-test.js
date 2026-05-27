@@ -1,6 +1,6 @@
 import http from "k6/http";
 import { check, sleep } from "k6";
-// Script de carga general K6
+
 export const options = {
   stages: [
     { duration: "30s", target: 10 },

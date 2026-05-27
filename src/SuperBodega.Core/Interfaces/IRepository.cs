@@ -8,4 +8,3 @@ public interface IRepository<T> where T : class
     Task<T> UpdateAsync(T entity);
     Task<bool> DeleteAsync(int id);
 }
-// Interfaces de repositorios

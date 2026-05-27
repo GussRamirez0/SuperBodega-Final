@@ -93,6 +93,3 @@ public class ProductosController : ControllerBase
         return NoContent();
     }
 }
-// DTO evitar ciclos
-// POST y PUT
-// filtro categoria

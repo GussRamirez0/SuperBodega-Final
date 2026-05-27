@@ -15,4 +15,3 @@ public class Venta
 
     public ICollection<DetalleVenta> Detalles { get; set; } = new List<DetalleVenta>();
 }
-// Entidad Venta

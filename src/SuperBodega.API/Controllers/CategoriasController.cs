@@ -54,7 +54,3 @@ public class CategoriasController : ControllerBase
         return NoContent();
     }
 }
-// GET endpoints
-// POST crear categorias
-// PUT actualizar
-// DELETE

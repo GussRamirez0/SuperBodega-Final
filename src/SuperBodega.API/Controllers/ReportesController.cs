@@ -4,10 +4,6 @@ using SuperBodega.Infrastructure.Data;
 
 namespace SuperBodega.API.Controllers;
 
-
-// Este controlador maneja los reportes de ventas, permitiendo obtener resúmenes de ventas por periodo,
-// por producto, por cliente y por proveedor.
-// Estos reportes son útiles para el análisis de negocio y la toma de decisiones.
 [ApiController]
 [Route("api/[controller]")]
 public class ReportesController : ControllerBase
@@ -72,8 +68,6 @@ public class ReportesController : ControllerBase
         return Ok(resultado);
     }
 
-    // Reporte de ventas por proveedor, mostrando el total de compras realizadas
-    // a cada proveedor y el monto total gastado.
     [HttpGet("ventas/proveedor")]
     public async Task<IActionResult> VentasPorProveedor()
     {
