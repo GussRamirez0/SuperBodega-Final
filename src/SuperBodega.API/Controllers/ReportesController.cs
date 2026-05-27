@@ -72,6 +72,8 @@ public class ReportesController : ControllerBase
         return Ok(resultado);
     }
 
+    // Reporte de ventas por proveedor, mostrando el total de compras realizadas
+    // a cada proveedor y el monto total gastado.
     [HttpGet("ventas/proveedor")]
     public async Task<IActionResult> VentasPorProveedor()
     {
