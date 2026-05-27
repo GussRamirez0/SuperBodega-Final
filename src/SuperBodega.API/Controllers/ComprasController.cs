@@ -56,6 +56,8 @@ public class ComprasController : ControllerBase
             .Where(c => c.ProveedorId == proveedorId)
             .ToListAsync());
 
+    //aumentamos el stock de los productos al crear una compra, y si algo falla,
+    //hacemos rollback para mantener la integridad de los datos
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CompraDto dto)
     {
