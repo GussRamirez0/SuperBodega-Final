@@ -87,6 +87,10 @@ public class VentasController : ControllerBase
         }
     }
 
+
+    // actualizar una venta, solo se pueden actualizar los detalles de la venta, no el cliente ni la fecha.
+    // Al actualizar una venta, se actualiza el stock de los productos involucrados, tanto para aumentar el stock si se reduce la cantidad vendida,
+    // como para reducir el stock si se aumenta la cantidad vendida.
     [HttpPatch("{id}/estado")]
     public async Task<IActionResult> CambiarEstado(int id, [FromBody] string nuevoEstado)
     {
