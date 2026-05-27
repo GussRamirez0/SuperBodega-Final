@@ -12,3 +12,4 @@ public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<Applicatio
         return new ApplicationDbContext(optionsBuilder.Options);
     }
 }
+// Factory design time

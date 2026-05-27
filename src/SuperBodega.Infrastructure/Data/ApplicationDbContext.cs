@@ -44,3 +44,4 @@ public class ApplicationDbContext : DbContext
         });
     }
 }
+// DbContext principal
