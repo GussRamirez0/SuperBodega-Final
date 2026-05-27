@@ -52,6 +52,9 @@ public class VentasController : ControllerBase
             .Where(v => v.Fecha >= inicio && v.Fecha <= fin)
             .ToListAsync());
 
+    // Verificar disponibilidad de stock antes de crear la venta, y actualizar el stock de los productos involucrados. Si no hay stock suficiente para alguno de los productos,
+    // se debe retornar un error indicando cuales productos no tienen stock suficiente.
+
     [HttpPost]
     public async Task<IActionResult> Create(Venta venta)
     {
