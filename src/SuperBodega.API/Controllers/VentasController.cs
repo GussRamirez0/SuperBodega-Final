@@ -62,6 +62,9 @@ public class VentasController : ControllerBase
             venta.Estado = "Pendiente";
             venta.Total = venta.Detalles.Sum(d => d.Cantidad * d.PrecioUnitario);
 
+
+            // validar stock y calcular subtotal de cada detalle,
+            // ademas de actualizar el stock de los productos antes de vender 
             foreach (var detalle in venta.Detalles)
             {
                 detalle.Subtotal = detalle.Cantidad * detalle.PrecioUnitario;
