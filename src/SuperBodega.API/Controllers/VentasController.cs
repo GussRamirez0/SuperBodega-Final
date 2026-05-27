@@ -5,6 +5,10 @@ using SuperBodega.Infrastructure.Data;
 
 namespace SuperBodega.API.Controllers;
 
+
+// este controlador maneja las ventas, permite crear una venta
+// con sus detalles, actualizarla, eliminarla y obtenerla por id o por cliente. Al crear una venta, se actualiza el stock de los productos involucrados. Ademas, permite cambiar el estado de una venta
+// entre "Pendiente", "Despachado", "Entregado" y "Cancelado".
 [ApiController]
 [Route("api/[controller]")]
 public class VentasController : ControllerBase
